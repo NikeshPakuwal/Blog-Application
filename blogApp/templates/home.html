@@ -1,9 +1,14 @@
-<h1>Post!</h1>
+{% extends 'base.html' %}
+{% block content %}
 
-<ul>
-    {% for post in object_list %}
-        <li><a href="{% url 'article-detail' post.pk %}">{{post.title}}</a> - {{post.author}} - {{post.author.first_name}} {{post.author.last_name}}
-            {{post.body|safe}}
-        </li>
-    {% endfor %}
-</ul>
+    <h1>Post!</h1>
+
+    <ul>
+        {% for post in object_list %}
+            <li><a href="{% url 'article-detail' post.pk %}">{{post.title}}</a> - {{post.author}} - {{post.author.first_name}} {{post.author.last_name}}
+                {{post.body|safe}}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

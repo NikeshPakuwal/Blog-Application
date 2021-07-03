@@ -1,8 +1,16 @@
-<h1>{{post.title}}</h1>
-<small>By: {{post.author.first_name}} {{post.author.last_name}}</small> <br>
-<hr>
-<br>
-{{post.body | safe}}
+{% extends 'base.html' %}
 
-<br><br>
-<a href="{% url 'home' %}">Back</a>
+{% block title %}{{ post.title_tag }}{% endblock title %}
+
+{% block content %}
+
+    <h1>{{post.title}}</h1>
+    <small>By: {{post.author.first_name}} {{post.author.last_name}}</small> <br>
+    <hr>
+    <br>
+    {{post.body | safe}}
+
+    <br><br>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+{% endblock %}
