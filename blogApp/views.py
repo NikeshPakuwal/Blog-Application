@@ -1,12 +1,17 @@
+from django.db import models
+from django.urls.base import reverse_lazy
 from blogApp.models import Post
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
+from .forms import PostForm, UpdateForm
+from django.urls import reverse_lazy
 
 
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
+    ordering = ['-id']
 
 class ArticleDetailView(DetailView):
     model = Post
@@ -14,5 +19,15 @@ class ArticleDetailView(DetailView):
 
 class AddPostView(CreateView):
     model = Post
+    form_class = PostForm
     template_name = 'add_post.html'
-    fields = '__all__'
+
+class UpdateProfileView(UpdateView):
+    model = Post
+    form_class = UpdateForm
+    template_name = 'update_post.html'
+
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'delete_post.html'
+    success_url = reverse_lazy('home')
