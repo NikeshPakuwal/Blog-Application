@@ -4,12 +4,17 @@
 
 <h1>Update Post</h1> <hr> <br>
 
-<div class="form-group">
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button class="btn btn-secondary" type="submit">Update</button>
-    </form>
-</div>
+{% if user.is_authenticated %}
+    <div class="form-group">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-secondary" type="submit">Update</button>
+        </form>
+    </div>
+{% else %}
+
+    You are not authenticated...!
+{% endif %}
 
 {% endblock %}

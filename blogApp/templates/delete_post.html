@@ -4,13 +4,17 @@
 
 <h1>Delete Post</h1> <hr> <br>
 
-<h3>Delete: {{post.title}}</h3> <br>
-<div class="form-group">
-    <form action="" method="POST">
-        {% csrf_token %}
-        <strong>Are you sure?</strong> <br> <br>
-        <button class="btn btn-secondary" type="submit">Delete</button>
-    </form>
-</div>
+{% if user.is_authenticated %}
+    <h3>Delete: {{post.title}}</h3> <br>
+    <div class="form-group">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <strong>Are you sure?</strong> <br> <br>
+            <button class="btn btn-secondary" type="submit">Delete</button>
+        </form>
+    </div>
+{% else %}
+    You are not authenticated...!
+{% endif %}
 
 {% endblock %}
