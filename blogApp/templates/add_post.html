@@ -8,14 +8,19 @@
     <div class="form-group">
         <form action="" method="POST">
             {% csrf_token %}
+            {{form.media}}
             {{form.as_p}}
             <button class="btn btn-secondary" type="submit">Post</button>
         </form>
     </div>
-{% else %}
 
+    <script>
+        var name = "{{user.id}}";
+        document.getElementById("author-name").value = name;
+    </script>
+
+{% else %}
     You are not authenticated...!
-    
 {% endif %}
 
 {% endblock %}

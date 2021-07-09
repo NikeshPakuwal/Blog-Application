@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogApp',
     'membersApp',
-    'froala_editor',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
