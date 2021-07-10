@@ -15,14 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from froala_editor import views
-
 
 urlpatterns = [
     path('', include('blogApp.urls')),
     path('admin/', admin.site.urls),
-    
-    path('froala_editor/',include('froala_editor.urls')),
 
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('membersApp.urls')),
