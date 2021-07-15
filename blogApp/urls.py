@@ -1,7 +1,7 @@
 from blogApp.models import Category
 from django.urls import path
 from . import views
-from .views import HomeView, ArticleDetailView, AddPostView, UpdateProfileView, DeletePostView, AddCategoryView, CategoryView, CategoryListView, LikeView
+from .views import HomeView, ArticleDetailView, AddPostView, UpdateProfileView, DeletePostView, AddCategoryView, CategoryView, CategoryListView, LikeView, AddCommentView
 
 
 urlpatterns = [
@@ -19,5 +19,5 @@ urlpatterns = [
 
     path('like/<int:pk>', LikeView, name='like_post'),
 
-
+    path('article/<int:pk>/comment/', AddCommentView.as_view(), name = 'add_comment'),
 ]
