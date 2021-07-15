@@ -1,3 +1,4 @@
+from membersApp import models
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
@@ -16,7 +17,7 @@ class UserRegisterView(generic.CreateView):
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
-    template_name = 'registration/edit_profile.html'
+    template_name = 'registration/edit_settings.html'
     success_url = reverse_lazy('home')
 
     def get_object(self):
@@ -39,3 +40,9 @@ class ShowProfilePageView(DetailView):
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
         context["page_user"] = page_user
         return context
+
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    template_name = 'registration/edit_profile_page.html'
+    fields = ['bio', 'profile_pic', 'website_url', 'facebook_url', 'twitter_url', 'instagram_url', 'pinterest_url']
+    success_url = reverse_lazy('home')
